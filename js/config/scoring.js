@@ -3,10 +3,10 @@ analyzerScoring = [
     {
         scoreName: "wordCount",
         scoreArray: [
-            {min: 300, score: 9, text: "The text contains %1$d words, this is more than the %2$d word recommended minimum."},
-            {min: 250, max: 299, score: 7, text: "The text contains %1$d words, this is slightly below the %2$d word recommended minimum, add a bit more copy."},
-            {min: 200, max: 249, score: 5, text: "The text contains %1$d words, this is below the %2$d word recommended minimum. Add more useful content on this topic for readers."},
-            {min: 100, max: 199, score: -10, text: "The text contains %1$d words, this is below the %2$d word recommended minimum. Add more useful content on this topic for readers."},
+            {min: 300, score: 9, text: "The text contains %1$d words. This is more than the %2$d word recommended minimum."},
+            {min: 250, max: 299, score: 7, text: "The text contains %1$d words. This is slightly below the %2$d word recommended minimum, so add a bit more copy."},
+            {min: 200, max: 249, score: 5, text: "The text contains %1$d words. This is below the %2$d word recommended minimum. Add more useful content on this topic for readers."},
+            {min: 100, max: 199, score: -10, text: "The text contains %1$d words. This is below the %2$d word recommended minimum. Add more useful content on this topic for readers."},
             {min: 0, max: 99, score: -20, text: "The text contains %1$d words. This is far too low and should be increased."}
         ],
         replaceArray: [
@@ -18,10 +18,10 @@ analyzerScoring = [
     {
         scoreName: "keywordDensity",
         scoreArray: [
-            {min: 3.5, score: -50, text: "The keyword density is %1$f%, which is way over the advised 2.5% maximum, the focus keyword was found %1$d times."},
-            {min: 2.5, max: 3.49, score: -10, text: "The keyword density is %1$f%, which is over the advised 2.5% maximum, the focus keyword was found %1$d times."},
-            {min: 0.5, max: 2.49, score: 9, text: "The keyword density is %1$f%, which is great, the focus keyword was found %1$d times."},
-            {min: 0, max: 0.49, score: 4, text: "The keyword density is %1$f%, which is a bit low, the focus keyword was found %1$d times."}
+            {min: 3.5, score: -50, text: "The keyword density is %1$f%, which is way over the advised 2.5% maximum. The focus keyword was found %1$d times."},
+            {min: 2.5, max: 3.49, score: -10, text: "The keyword density is %1$f%, which is over the advised 2.5% maximum. The focus keyword was found %1$d times."},
+            {min: 0.5, max: 2.49, score: 9, text: "The keyword density is %1$f%, which is great. The focus keyword was found %1$d times."},
+            {min: 0, max: 0.49, score: 4, text: "The keyword density is %1$f%, which is a bit low. The focus keyword was found %1$d times."}
         ],
         replaceArray: [
             {name: "keywordDensity", position: "%1$f", source: "matcher"},
@@ -31,8 +31,8 @@ analyzerScoring = [
     {
         scoreName: "linkCount",
         scoreArray: [
-            {matcher: "total", min: 0, max: 0, score: 6, text: "No outbound links appear in this page, consider adding some as appropriate."},
-            {matcher: "totalKeyword", min: 1, score: 2, text: "You\'re linking to another page with the focus keyword you want this page to rank for, consider changing that if you truly want this page to rank."},
+            {matcher: "total", min: 0, max: 0, score: 6, text: "No outbound links appear in this page. Consider adding some as appropriate."},
+            {matcher: "totalKeyword", min: 1, score: 2, text: "You\'re linking to another page with the focus keyword you want this page to rank for. Consider changing that if you truly want this page to rank."},
             {type: "externalAllNofollow", score: 7, text: "This page has %2$s outbound link(s), all nofollowed."},
             {type: "externalHasNofollow", score: 8, text: "This page has %2$s nofollowed link(s) and %3$s normal outbound link(s)."},
             {type: "externalAllDofollow", score: 9, text: "This page has %1$s outbound link(s)."}
@@ -67,9 +67,9 @@ analyzerScoring = [
         metaMinLength: 120,
         metaMaxLength: 156,
         scoreArray: [
-            {max: 0, score: 1, text: "No meta description has been specified, search engines will display copy from the page instead."},
+            {max: 0, score: 1, text: "No meta description has been specified. Search engines will display copy from the page instead."},
             {max: 120, score: 6, text: "The meta description is under %1$d characters, however up to %2$d characters are available."},
-            {min: 156, score: 6, text: "The specified meta description is over %2$d characters, reducing it will ensure the entire description is visible"},
+            {min: 156, score: 6, text: "The specified meta description is over %2$d characters. Reducing it will ensure the entire description is visible."},
             {min: 120, max: 156, score: 9, text: "In the specified meta description, consider: How does it compare to the competition? Could it be made more appealing?"}
         ],
         replaceArray: [
@@ -86,13 +86,13 @@ analyzerScoring = [
     },{
         scoreName: "firstParagraph",
         scoreArray: [
-            {max: 0, score: 3, text: "The focus keyword doesn\'t appear in the first paragraph of the copy, make sure the topic is clear immediately."},
+            {max: 0, score: 3, text: "The focus keyword doesn\'t appear in the first paragraph of the copy. Include it to make sure the topic is clear immediately."},
             {min: 1, score: 9, text: "The focus keyword appears in the first paragraph of the copy."}
         ]
     },{
         scoreName: "stopwordKeywordCount",
         scoreArray: [
-            {matcher: "count", min: 1, score: 5, text: "The focus keyword for this page contains one or more %1$s, consider removing them. Found \'%2$s\'."},
+            {matcher: "count", min: 1, score: 5, text: "The focus keyword for this page contains one or more %1$s. Consider removing them. Found \'%2$s\'."},
             {matcher: "count", max: 0, score: 0, text: ""}
         ],
         replaceArray: [
@@ -128,7 +128,7 @@ analyzerScoring = [
         scoreTitleKeywordLimit: 0,
         scoreArray:[
             {matcher: "matches", max: 0, score: 2, text: "The focus keyword '%1$s' does not appear in the page title."},
-            {matcher: "position", max: 1, score: 9, text: "The page title contains the focus keyword, at the beginning which is considered to improve rankings."},
+            {matcher: "position", max: 1, score: 9, text: "The page title contains the focus keyword at the beginning which is considered to improve rankings."},
             {matcher: "position", min: 1, score: 6, text: "The page title contains the focus keyword, but it does not appear at the beginning; try and move it to the beginning."}
         ],
         replaceArray:[
@@ -143,20 +143,20 @@ analyzerScoring = [
     },{
         scoreName: "urlLength",
         scoreArray:[
-            {type: "urlTooLong", score: 5, text: "The slug for this page is a bit long, consider shortening it."}
+            {type: "urlTooLong", score: 5, text: "The slug for this page is a bit long. Consider shortening it."}
         ]
     },{
         scoreName: "urlStopwords",
         scoreArray:[
-            {min: 1, score: 5, text: "The slug for this page contains one or more <a href='http://en.wikipedia.org/wiki/Stop_words'>stop words</a>, consider removing them."}
+            {min: 1, score: 5, text: "The slug for this page contains one or more <a href='http://en.wikipedia.org/wiki/Stop_words'>stop words</a>. Consider removing them."}
         ]
     },{
         scoreName: "imageCount",
         scoreArray:[
-            {matcher: "total", max: 0, score: 3, text: "No images appear in this page, consider adding some as appropriate."},
-            {matcher: "noAlt", min: 1, score: 5, text: "The images on this page are missing alt tags."},
-            {matcher: "alt", min: 1, score: 5, text: "The images on this page do not have alt tags containing your focus keyword."},
-            {matcher: "altKeyword", min: 1, score: 9, text: "The images on this page contain alt tags with the focus keyword."}
+            {matcher: "total", max: 0, score: 3, text: "No images appear in this page. Consider adding some as appropriate."},
+            {matcher: "noAlt", min: 1, score: 5, text: "The images on this page are missing alt attributes."},
+            {matcher: "alt", min: 1, score: 5, text: "The images on this page do not have alt attributes containing your focus keyword."},
+            {matcher: "altKeyword", min: 1, score: 9, text: "The images on this page contain alt attributes with the focus keyword."}
         ]
     }
 ];
